@@ -7,6 +7,9 @@ install_ltc() {
     tar -zxvf litecoin-0.16.0-x86_64-linux-gnu.tar.gz
     install -m 0755 -o root -g root -t /usr/local/bin ~/litecoin-0.16.0/bin/*
     rm -rf ~/litecoin-0.16.0/ litecoin-0.16.0-x86_64-linux-gnu.tar.gz
+    cd ~/
+    mkdir .litecoin
+    cp sample.conf ~/litecoin/litecoin.conf
     litecoind -printtoconsole
 }
 
@@ -15,6 +18,9 @@ install_btc() {
     apt-add-repository ppa:bitcoin/bitcoin
     apt-get update
     apt-get install bitcoind
+    cd ~/
+    mkdir .bitcoin
+    cp sample.conf ~/bitcoin/bitcoin.conf
     bitcoind -printtoconsole
 }
 
