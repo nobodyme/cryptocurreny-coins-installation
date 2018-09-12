@@ -11,7 +11,7 @@ install_ltc() {
 }
 
 install_btc() {
-    apt-add-repository ppa:bitcoin/bitcoin
+    apt-add-repository ppa:bitcoin/bitcoin -y
     apt-get update
     apt-get install bitcoind
     mkdir ~/.bitcoin
