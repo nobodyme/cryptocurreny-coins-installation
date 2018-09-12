@@ -1,14 +1,17 @@
 #!/bin/bash
 
 install_ltc() {
+    echo "ltc installing.. open, tmux attach -t ltc-node to view"
     tmux new-session -d -s ltc-node './node-install.sh -ltc'
 }
 
 install_btc() {
+    echo "btc installing.. open, tmux attach -t btc-node to view"
     tmux new-session -d -s btc-node './node-install.sh -btc'
 }
 
 install_eth() {
+    echo "eth installing.. open, tmux attach -t eth-node to view"
     tmux new-session -d -s eth-node './node-install.sh -eth'
 }
 

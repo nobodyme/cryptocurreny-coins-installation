@@ -1,7 +1,6 @@
 #!/bin/bash
 
 install_ltc() {
-    echo "ltc installing.."
     wget https://download.litecoin.org/litecoin-0.16.0/linux/litecoin-0.16.0-x86_64-linux-gnu.tar.gz
     tar -zxvf litecoin-0.16.0-x86_64-linux-gnu.tar.gz
     install -m 0755 -o root -g root -t /usr/local/bin litecoin-0.16.0/bin/*
@@ -12,8 +11,7 @@ install_ltc() {
 }
 
 install_btc() {
-    echo "btc installing.."
-    apt-add-repository -y ppa:bitcoin/bitcoin
+    apt-add-repository ppa:bitcoin/bitcoin
     apt-get update
     apt-get install bitcoind
     mkdir ~/.bitcoin
@@ -22,7 +20,6 @@ install_btc() {
 }
 
 install_eth() {
-    echo "eth installing.."
     apt-get install software-properties-common
 	add-apt-repository -y ppa:ethereum/ethereum
 	apt-get update
