@@ -1,1 +1,1 @@
-cp start sample.conf /usr/local/bin/
+cp start sample.conf nodes.sh /usr/local/bin/
