@@ -5,7 +5,7 @@ install_ltc() {
     tar -zxvf ~/litecoin-0.16.0-x86_64-linux-gnu.tar.gz -C ~/
     install -m 0755 -o root -g root -t /usr/local/bin ~/litecoin-0.16.0/bin/*
     rm -rf ~/litecoin-0.16.0/ ~/litecoin-0.16.0-x86_64-linux-gnu.tar.gz
-    mkdir ~/.litecoin
+    mkdir ~/.litecoin > /dev/null 2>&1
     cp sample.conf ~/.litecoin/litecoin.conf
     litecoind -printtoconsole
 }
@@ -14,7 +14,7 @@ install_btc() {
     apt-add-repository ppa:bitcoin/bitcoin -y
     apt-get update
     apt-get install bitcoind
-    mkdir ~/.bitcoin
+    mkdir ~/.bitcoin > /dev/null 2>&1
     cp sample.conf ~/.bitcoin/bitcoin.conf
     bitcoind -printtoconsole
 }
@@ -30,7 +30,7 @@ install_eth() {
 install_bch() {
     wget -P ~/ https://download.bitcoinabc.org/0.17.2/linux/bitcoin-abc-0.17.2-x86_64-linux-gnu.tar.gz
     tar -zxvf ~/bitcoin-abc-0.17.2-x86_64-linux-gnu.tar.gz -C ~/
-    mkdir -p ~/bitcoincash/binaries ~/.bitcoin
+    mkdir -p ~/bitcoincash/binaries ~/.bitcoin > /dev/null 2>&1
     cp sample.conf ~/.bitcoin/bitcoin.conf
     cp ~/bitcoin-abc-0.17.2/bin/* ~/bitcoincash/binaries
     rm -rf ~/bitcoin-abc-0.17.2-x86_64-linux-gnu.tar.gz ~/bitcoin-abc-0.17.2/
