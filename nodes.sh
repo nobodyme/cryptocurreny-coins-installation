@@ -27,12 +27,25 @@ install_eth() {
 	geth --rpc --rpccorsdomain "*" --rpcapi "eth,web3,admin,miner,personal,txpool"
 }
 
+install_bch() {
+    cd ~
+    wget https://download.bitcoinabc.org/0.17.2/linux/bitcoin-abc-0.17.2-x86_64-linux-gnu.tar.gz
+    tar -zxvf bitcoin-abc-0.17.2-x86_64-linux-gnu.tar.gz
+    rm -rf ~/bitcoin-abc-0.17.2-x86_64-linux-gnu.tar.gz
+    mkdir -p bitcoincash/binaries ~/.bitcoincash
+    cd -
+    cp sample.conf ~/.bitcoincash/bitcoincash.conf
+    cp ~/bitcoin-abc-0.17.2/bin/* ~/bitcoincash/binaries
+    ~/bitcoincash/binaries/bitcoind -printtoconsole
+}
+
 for i in "$@"
     do
     case $i in
         -ltc) install_ltc;;
         -btc) install_btc;; 
         -eth) install_eth;;
+        -bch) install_bch;;
         *) echo "wrong argument" exit 1;;
     esac
 done

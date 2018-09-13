@@ -1,0 +1,41 @@
+#!/bin/bash
+
+install_ltc() {
+    echo "ltc installing.. open, tmux attach -t ltc-node to view"
+    tmux new-session -d -s ltc-node './nodes.sh -ltc'
+}
+
+install_btc() {
+    echo "btc installing.. open, tmux attach -t btc-node to view"
+    tmux new-session -d -s btc-node './nodes.sh -btc'
+}
+
+install_eth() {
+    echo "eth installing.. open, tmux attach -t eth-node to view"
+    tmux new-session -d -s eth-node './nodes.sh -eth'
+}
+
+install_bch() {
+    echo "eth installing.. open, tmux attach -t bch-node to view"
+    tmux new-session -d -s bch-node './nodes.sh -bch'
+}
+
+install_all() {
+    tmux new-session -d -s ltc-node './nodes.sh -ltc'
+    tmux new-session -d -s btc-node './nodes.sh -btc'
+    tmux new-session -d -s eth-node './nodes.sh -eth'
+    tmux new-session -d -s bch-node './nodes.sh -bch'
+}
+
+for i in "$@"
+    do
+    case $i in
+        ltc) install_ltc;;
+        btc) install_btc;; 
+        eth) install_eth;;
+        bch) install_bch;;
+        all) install_all;;
+        *) echo "wrong argument" exit 1;;
+    esac
+done
+
